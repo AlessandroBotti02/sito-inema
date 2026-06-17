@@ -2,6 +2,8 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 const links = [
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
@@ -75,7 +77,7 @@ export default function ProfileNav({ lang, setLang }: { lang: "en" | "it"; setLa
             ← INEMA
           </a>
           <img
-            src="/logo.png"
+            src={`${BASE}/logo.png`}
             alt="INEMA"
             width={88}
             height={22}

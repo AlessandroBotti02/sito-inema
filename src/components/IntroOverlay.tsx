@@ -3,6 +3,7 @@ import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const ease = [0.22, 1, 0.36, 1] as const;
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 export default function IntroOverlay({ onEnd }: { onEnd?: () => void }) {
   const [visible, setVisible] = useState(true);
@@ -42,7 +43,7 @@ export default function IntroOverlay({ onEnd }: { onEnd?: () => void }) {
         >
           <video
             ref={videoRef}
-            src="/intro.mp4"
+            src={`${BASE}/intro.mp4`}
             autoPlay
             muted
             playsInline

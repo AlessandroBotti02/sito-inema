@@ -2,6 +2,8 @@
 import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 const chips = [
   { label: "Data Management", teal: true },
   { label: "App Development", teal: true },
@@ -152,7 +154,7 @@ export default function ProfileHero({ lang }: { lang: "en" | "it" }) {
             transition={{ duration: 0.85, delay: 0.22, ease }}
           >
             <img
-              src="/team/avatar-botti.png"
+              src={`${BASE}/team/avatar-botti.png`}
               alt="Alessandro Botti"
               style={{ width: 300, height: 300, objectFit: "contain", display: "block" }}
             />

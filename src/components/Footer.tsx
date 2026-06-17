@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 
 const ease = [0.22, 1, 0.36, 1] as const;
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const canHover = typeof window !== "undefined" && matchMedia("(hover: hover) and (pointer: fine)").matches;
 
 export default function Footer({ lang }: { lang: "it" | "en" }) {
@@ -68,7 +69,7 @@ export default function Footer({ lang }: { lang: "it" | "en" }) {
         >
           <div>
             <img
-              src="/logo.png"
+              src={`${BASE}/logo.png`}
               alt="INEMA"
               width={128}
               height={32}

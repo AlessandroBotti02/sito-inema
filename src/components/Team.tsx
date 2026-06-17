@@ -4,6 +4,8 @@ import { useRef, useState, useEffect } from "react";
 import { team } from "@/data/team";
 import Link from "next/link";
 
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 const ease = [0.22, 1, 0.36, 1] as const;
 
 function MemberCard({
@@ -41,7 +43,7 @@ function MemberCard({
         {/* Avatar */}
         {member.avatar ? (
           <img
-            src={member.avatar}
+            src={`${BASE}${member.avatar}`}
             alt={member.name}
             style={{
               width: 64,

@@ -3,6 +3,7 @@ import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 const ease = [0.22, 1, 0.36, 1] as const;
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 type LogoOffset = { x: number; y: number; scale: number };
 
@@ -145,7 +146,7 @@ export default function Hero({ lang }: { lang: "it" | "en" }) {
               }}
             />
             <img
-              src="/logo.png"
+              src={`${BASE}/logo.png`}
               alt="INEMA — Keep moving forward"
               width={320}
               height={100}

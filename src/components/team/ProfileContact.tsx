@@ -2,6 +2,8 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 const ease = [0.22, 1, 0.36, 1] as const;
 const btnSpring = { type: "spring", stiffness: 500, damping: 28, mass: 0.8 } as const;
 
@@ -48,7 +50,7 @@ export default function ProfileContact({ lang }: { lang: "en" | "it" }) {
               display: "flex", alignItems: "center", justifyContent: "center",
             }}>
               <img
-                src="/team/photo-botti.jpg"
+                src={`${BASE}/team/photo-botti.jpg`}
                 alt="Alessandro Botti"
                 onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; (e.target as HTMLImageElement).nextElementSibling?.setAttribute("style", "display:flex"); }}
                 style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center" }}

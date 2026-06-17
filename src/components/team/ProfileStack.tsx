@@ -3,6 +3,8 @@ import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
 import { projects } from "@/data/projects";
 
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 const ease = [0.22, 1, 0.36, 1] as const;
 
 type ToolDef = {
@@ -160,7 +162,7 @@ function AppIcon({ tool, globalIndex, lang, inView }: {
       >
         {tool.svgFile ? (
           <img
-            src={`/team/icons/${tool.svgFile}`}
+            src={`${BASE}/team/icons/${tool.svgFile}`}
             alt={tool.name}
             style={{ width: tool.iconSize ?? 32, height: tool.iconSize ?? 32, objectFit: "contain" }}
             draggable={false}

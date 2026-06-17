@@ -2,6 +2,8 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export default function LoadingScreen() {
   const [visible, setVisible] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -43,7 +45,7 @@ export default function LoadingScreen() {
         >
           <video
             ref={videoRef}
-            src="/intro.mp4"
+            src={`${BASE}/intro.mp4`}
             autoPlay
             muted
             playsInline

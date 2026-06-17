@@ -2,6 +2,8 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 const links = [
   { label: { it: "Chi Siamo", en: "About" }, href: "#chi-siamo" },
   { label: { it: "Aree", en: "Services" }, href: "#aree" },
@@ -67,7 +69,7 @@ export default function Nav({ lang, setLang }: { lang: "it" | "en"; setLang: (l:
         {/* Logo — appears when hero logo has flown here */}
         <a href="#hero" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
           <motion.img
-            src="/logo.png"
+            src={`${BASE}/logo.png`}
             alt="INEMA"
             width={112}
             height={28}
