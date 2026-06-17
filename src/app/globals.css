@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #E8EAED;
+  --card: rgba(255, 255, 255, 0.88);
+  --card-border: rgba(0, 0, 0, 0.08);
+  --card-shadow: 0 2px 16px rgba(0,0,0,0.06), 0 0 0 0.5px rgba(0,0,0,0.07);
+  --card-shadow-hover: 0 12px 40px rgba(0,0,0,0.10), 0 0 0 0.5px rgba(0,0,0,0.07);
+  --text-primary: #0A1520;
+  --text-secondary: #4A6070;
+  --text-muted: #5A6E7A;   /* 4.55:1 on --bg — passes WCAG AA */
+  --text-faint: #668594;   /* 3.14:1 on --bg — passes WCAG AA for large text (≥18px) */
+  --blue: #2878B4;
+  --blue-dark: #1B3E6E;
+  --blue-mid: #3A90CC;
+  --blue-bg: rgba(40, 120, 180, 0.08);
+  --blue-border: rgba(40, 120, 180, 0.22);
+  --navy: #1C2E3C;
+  --bg-primary: #F0F2F5;
+  /* teal→blue aliases for portfolio-derived profile components */
+  --teal: var(--blue);
+  --teal-dark: var(--blue-dark);
+  --teal-bg: var(--blue-bg);
+  --teal-border: var(--blue-border);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Focus rings — visible to keyboard users, invisible on mouse clicks */
+input:focus-visible,
+textarea:focus-visible {
+  box-shadow: 0 0 0 2px rgba(40, 120, 180, 0.25), 0 0 0 1px var(--blue) !important;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+button { touch-action: manipulation; }
+
+/* Skip to content link — visible only on keyboard focus */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  height: auto;
+  background: var(--blue-dark);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 9999;
+  text-decoration: none;
+}
+
+/* Respect reduced-motion OS preference for CSS animations */
+@media (prefers-reduced-motion: reduce) {
+  .logo-orb,
+  .logo-ring,
+  .logo-ring-2 {
+    animation: none;
+  }
+}
+
+.card {
+  background: var(--card);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-radius: 18px;
+  border: 0.5px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+}
+
+::selection { background: rgba(40, 120, 180, 0.16); }
+::-webkit-scrollbar { width: 0; }
+
+section { scroll-margin-top: 80px; }
+
+@keyframes orb-breathe {
+  0%, 100% { transform: scale(1); opacity: 0.55; }
+  50% { transform: scale(1.18); opacity: 0.75; }
+}
+
+@keyframes orb-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes shimmer-ring {
+  0%, 100% { opacity: 0.3; transform: scale(0.95); }
+  50% { opacity: 0.7; transform: scale(1.05); }
+}
+
+.logo-orb {
+  animation: orb-breathe 4s ease-in-out infinite;
+}
+
+.logo-ring {
+  animation: shimmer-ring 3s ease-in-out infinite;
+}
+
+.logo-ring-2 {
+  animation: shimmer-ring 3s ease-in-out infinite 1s;
+}
