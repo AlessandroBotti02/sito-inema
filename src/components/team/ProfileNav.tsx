@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -61,7 +62,7 @@ export default function ProfileNav({ lang, setLang }: { lang: "en" | "it"; setLa
       >
         {/* Left: back link + INEMA logo */}
         <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-          <a
+          <Link
             href="/"
             style={{
               fontSize: 12,
@@ -75,7 +76,7 @@ export default function ProfileNav({ lang, setLang }: { lang: "en" | "it"; setLa
             }}
           >
             ← INEMA
-          </a>
+          </Link>
           <img
             src={`${BASE}/logo.png`}
             alt="INEMA"
