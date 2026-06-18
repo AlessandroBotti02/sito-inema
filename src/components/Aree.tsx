@@ -18,8 +18,8 @@ const ICONS: Record<string, React.ReactNode> = {
 
 const cardVariants = {
   enter: (d: number) => ({ y: d > 0 ? 56 : -56, opacity: 0 }),
-  center: { y: 0, opacity: 1, transition: { duration: 0.42, ease: [0.22, 1, 0.36, 1] } },
-  exit:  (d: number) => ({ y: d > 0 ? -56 : 56, opacity: 0, transition: { duration: 0.22, ease: [0.22, 1, 0.36, 1] } }),
+  center: { y: 0, opacity: 1, transition: { duration: 0.42, ease } },
+  exit:  (d: number) => ({ y: d > 0 ? -56 : 56, opacity: 0, transition: { duration: 0.22, ease } }),
 };
 
 function SectionHeader({ lang, t }: { lang: "it" | "en"; t: { label: string; title: string; titleAccent: string } }) {
