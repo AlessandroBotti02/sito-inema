@@ -49,7 +49,7 @@ export default function ProfileHero({ lang }: { lang: "en" | "it" }) {
 
   const t = {
     en: {
-      eyebrow: "Management & Operations Consultant · Inema",
+      eyebrow: "Alessandro Botti · Management & Operations Consultant",
       h1a: "Data consultant",
       h1b: "& app builder.",
       sub: "I help companies work better with their own data — building tools, planning systems, and AI integrations that actually get used.",
@@ -57,7 +57,7 @@ export default function ProfileHero({ lang }: { lang: "en" | "it" }) {
       cta2: "Get in touch",
     },
     it: {
-      eyebrow: "Management & Operations Consultant · Inema",
+      eyebrow: "Alessandro Botti · Management & Operations Consultant",
       h1a: "Consulente dati",
       h1b: "& sviluppatore app.",
       sub: "Aiuto le aziende a lavorare meglio con i propri dati — costruendo strumenti, sistemi di pianificazione e integrazioni AI che vengono davvero usati.",

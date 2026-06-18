@@ -4,13 +4,14 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const ease = [0.22, 1, 0.36, 1] as const;
 
 const links = [
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "Stack", href: "#stack" },
-  { label: "Contact", href: "#contact" },
+  { label: { it: "About", en: "About" }, href: "#about" },
+  { label: { it: "Skills", en: "Skills" }, href: "#skills" },
+  { label: { it: "Progetti", en: "Projects" }, href: "#projects" },
+  { label: { it: "Stack", en: "Stack" }, href: "#stack" },
+  { label: { it: "Contatti", en: "Contact" }, href: "#contact" },
 ];
 
 export default function ProfileNav({ lang, setLang }: { lang: "en" | "it"; setLang: (l: "en" | "it") => void }) {
@@ -39,7 +40,7 @@ export default function ProfileNav({ lang, setLang }: { lang: "en" | "it"; setLa
     <motion.header
       initial={{ y: -60, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.6, delay: 0.5, ease }}
       style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, display: "flex", justifyContent: "center", padding: "14px 16px" }}
     >
       <div
@@ -48,7 +49,7 @@ export default function ProfileNav({ lang, setLang }: { lang: "en" | "it"; setLa
           alignItems: "center",
           justifyContent: "space-between",
           width: "100%",
-          maxWidth: 900,
+          maxWidth: 1000,
           padding: "8px 20px",
           borderRadius: 2,
           background: scrolled ? "rgba(6,17,30,0.90)" : "rgba(6,17,30,0.45)",
@@ -57,36 +58,21 @@ export default function ProfileNav({ lang, setLang }: { lang: "en" | "it"; setLa
           boxShadow: scrolled
             ? "0 4px 24px rgba(0,0,0,0.35), 0 0 0 0.5px rgba(255,255,255,0.07)"
             : "0 0 0 0.5px rgba(255,255,255,0.06)",
-          transition: "all 0.35s ease",
+          transition: "all 0.4s ease",
         }}
       >
-        {/* Left: back link + INEMA logo */}
-        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-          <Link
-            href="/"
-            style={{
-              fontSize: 12,
-              fontWeight: 500,
-              color: "var(--text-muted)",
-              textDecoration: "none",
-              display: "flex",
-              alignItems: "center",
-              gap: 4,
-              whiteSpace: "nowrap",
-            }}
-          >
-            ← INEMA
-          </Link>
+        {/* Left: logo as back link to main site */}
+        <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
           <img
             src={`${BASE}/logo.png`}
             alt="INEMA"
-            width={88}
-            height={22}
-            style={{ height: 22, width: "auto", objectFit: "contain" }}
+            width={112}
+            height={28}
+            style={{ height: 28, width: "auto", objectFit: "contain" }}
           />
-        </div>
+        </Link>
 
-        {/* Center: section links */}
+        {/* Center: profile section links */}
         <nav style={{ display: "flex", alignItems: "center", gap: 0 }}>
           {links.map((link) => {
             const isActive = active === link.href.slice(1);
@@ -96,9 +82,10 @@ export default function ProfileNav({ lang, setLang }: { lang: "en" | "it"; setLa
                 href={link.href}
                 style={{
                   position: "relative",
-                  padding: "6px 11px",
+                  padding: "6px 12px",
                   fontSize: 12,
                   fontWeight: isActive ? 500 : 400,
+                  letterSpacing: "0.04em",
                   color: isActive ? "#fff" : "rgba(255,255,255,0.48)",
                   textDecoration: "none",
                   transition: "color 0.2s ease",
@@ -108,7 +95,7 @@ export default function ProfileNav({ lang, setLang }: { lang: "en" | "it"; setLa
                   gap: 3,
                 }}
               >
-                {link.label}
+                {link.label[lang]}
                 <motion.span
                   style={{
                     position: "absolute",
@@ -117,50 +104,77 @@ export default function ProfileNav({ lang, setLang }: { lang: "en" | "it"; setLa
                     translateX: "-50%",
                     height: 1.5,
                     width: "60%",
-                    background: "var(--blue)",
-                    borderRadius: 2,
+                    background: "var(--blue-mid)",
+                    borderRadius: 1,
                     originX: 0.5,
                   }}
                   animate={{ scaleX: isActive ? 1 : 0 }}
-                  transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                  transition={{ duration: 0.25, ease }}
                 />
               </a>
             );
           })}
         </nav>
 
-        {/* Right: lang toggle */}
-        <div
-          onClick={() => setLang(lang === "en" ? "it" : "en")}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 0,
-            fontSize: 11,
-            fontWeight: 600,
-            borderRadius: 2,
-            border: "0.5px solid rgba(255,255,255,0.10)",
-            background: "rgba(255,255,255,0.05)",
-            overflow: "hidden",
-            cursor: "pointer",
-            userSelect: "none",
-          }}
-        >
-          {(["en", "it"] as const).map((l) => (
-            <span
-              key={l}
-              style={{
-                padding: "5px 10px",
-                borderRadius: 20,
-                background: lang === l ? "var(--blue)" : "transparent",
-                color: lang === l ? "#fff" : "var(--text-muted)",
-                transition: "all 0.2s ease",
-                letterSpacing: "0.06em",
-              }}
-            >
-              {l.toUpperCase()}
-            </span>
-          ))}
+        {/* Right: lang toggle + CTA */}
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <div
+            onClick={() => setLang(lang === "it" ? "en" : "it")}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              fontSize: 11,
+              fontWeight: 600,
+              borderRadius: 2,
+              border: "0.5px solid rgba(255,255,255,0.10)",
+              background: "rgba(255,255,255,0.05)",
+              overflow: "hidden",
+              cursor: "pointer",
+              userSelect: "none",
+              letterSpacing: "0.08em",
+            }}
+          >
+            {(["it", "en"] as const).map((l) => (
+              <span
+                key={l}
+                style={{
+                  padding: "5px 10px",
+                  borderRadius: 2,
+                  background: lang === l ? "var(--blue)" : "transparent",
+                  color: lang === l ? "#fff" : "rgba(255,255,255,0.40)",
+                  transition: "all 0.2s ease",
+                  letterSpacing: "0.08em",
+                }}
+              >
+                {l.toUpperCase()}
+              </span>
+            ))}
+          </div>
+          <Link
+            href="/#contatti"
+            style={{
+              fontSize: 11,
+              fontWeight: 600,
+              letterSpacing: "0.06em",
+              padding: "7px 18px",
+              borderRadius: 2,
+              border: "0.5px solid rgba(255,255,255,0.20)",
+              background: "transparent",
+              color: "#fff",
+              textDecoration: "none",
+              transition: "background 0.2s, border-color 0.2s",
+            }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,1)";
+              (e.currentTarget as HTMLAnchorElement).style.color = "#06111E";
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLAnchorElement).style.background = "transparent";
+              (e.currentTarget as HTMLAnchorElement).style.color = "#fff";
+            }}
+          >
+            {lang === "it" ? "CONTATTACI" : "CONTACT"}
+          </Link>
         </div>
       </div>
     </motion.header>

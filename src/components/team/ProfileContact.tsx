@@ -119,15 +119,6 @@ export default function ProfileContact({ lang }: { lang: "en" | "it" }) {
           </motion.div>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.5, delay: 0.35 }}
-          style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 20, padding: "0 4px" }}
-        >
-          <span style={{ fontSize: 11, color: "var(--text-muted)" }}>Alessandro Botti © 2026</span>
-          <span style={{ fontSize: 11, color: "var(--text-muted)" }}>{t.footer}</span>
-        </motion.div>
       </div>
     </section>
   );

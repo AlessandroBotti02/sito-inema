@@ -160,13 +160,13 @@ export default function ProfileSkills({ lang }: { lang: "en" | "it" }) {
               style={{
                 position: "absolute",
                 top: "50%", left: "50%",
-                transform: "translate(-50%, -50%)",
-                width: 60, height: 60,
+                translateX: "-50%", translateY: "-50%",
+                width: 80, height: 80,
                 borderRadius: "50%",
                 border: "1.5px solid var(--teal)",
                 pointerEvents: "none",
               }}
-              animate={{ scale: [1, 1.9], opacity: [0.45, 0] }}
+              animate={{ scale: [1, 2], opacity: [0.45, 0] }}
               transition={{ duration: 2.2, repeat: Infinity, ease: "easeOut", delay: 0.9 }}
             />
           )}
@@ -177,15 +177,16 @@ export default function ProfileSkills({ lang }: { lang: "en" | "it" }) {
             style={{
               position: "absolute",
               top: "50%", left: "50%",
-              transform: "translate(-50%, -50%)",
-              width: 60, height: 60,
-              borderRadius: "50%",
+              translateX: "-50%", translateY: "-50%",
+              padding: "10px 20px",
+              borderRadius: 40,
               background: "var(--teal)",
               display: "flex", alignItems: "center", justifyContent: "center",
               boxShadow: "0 0 0 8px var(--teal-bg)",
+              whiteSpace: "nowrap",
             }}
           >
-            <span style={{ fontSize: 11, fontWeight: 700, color: "white", letterSpacing: "0.06em" }}>AB</span>
+            <span style={{ fontSize: 10, fontWeight: 700, color: "white", letterSpacing: "0.05em", textTransform: "uppercase" }}>Alessandro Botti</span>
           </motion.div>
 
           {/* Orbit rings */}

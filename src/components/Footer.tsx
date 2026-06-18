@@ -5,19 +5,19 @@ const ease = [0.22, 1, 0.36, 1] as const;
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const canHover = typeof window !== "undefined" && matchMedia("(hover: hover) and (pointer: fine)").matches;
 
-export default function Footer({ lang }: { lang: "it" | "en" }) {
+export default function Footer({ lang, prefix = "" }: { lang: "it" | "en"; prefix?: string }) {
   const navLinks = {
     it: [
-      { label: "Chi Siamo", href: "#chi-siamo" },
-      { label: "Aree di Intervento", href: "#aree" },
-      { label: "Settori", href: "#settori" },
-      { label: "Contatti", href: "#contatti" },
+      { label: "Chi Siamo", href: `${prefix}#chi-siamo` },
+      { label: "Aree di Intervento", href: `${prefix}#aree` },
+      { label: "Settori", href: `${prefix}#settori` },
+      { label: "Contatti", href: `${prefix}#contatti` },
     ],
     en: [
-      { label: "About", href: "#chi-siamo" },
-      { label: "Services", href: "#aree" },
-      { label: "Sectors", href: "#settori" },
-      { label: "Contact", href: "#contatti" },
+      { label: "About", href: `${prefix}#chi-siamo` },
+      { label: "Services", href: `${prefix}#aree` },
+      { label: "Sectors", href: `${prefix}#settori` },
+      { label: "Contact", href: `${prefix}#contatti` },
     ],
   }[lang];
 
@@ -118,7 +118,7 @@ export default function Footer({ lang }: { lang: "it" | "en" }) {
           </div>
 
           <motion.a
-            href="#contatti"
+            href={`${prefix}#contatti`}
             whileHover={canHover ? { scale: 1.02 } : {}}
             whileTap={{ scale: 0.97 }}
             style={{

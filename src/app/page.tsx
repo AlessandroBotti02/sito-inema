@@ -17,10 +17,7 @@ export default function Home() {
 
   return (
     <MotionConfig reducedMotion="user">
-      <a href="#hero" className="skip-link">
-        {lang === "it" ? "Salta al contenuto principale" : "Skip to main content"}
-      </a>
-      <main style={{ minHeight: "100vh" }}>
+<main style={{ minHeight: "100vh" }}>
         <ProgressBar />
         <Nav lang={lang} setLang={setLang} />
         <Hero lang={lang} />

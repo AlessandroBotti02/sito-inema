@@ -8,6 +8,7 @@ import ProfileSkills from "./ProfileSkills";
 import ProfileProjects from "./ProfileProjects";
 import ProfileStack from "./ProfileStack";
 import ProfileContact from "./ProfileContact";
+import Footer from "@/components/Footer";
 
 export default function ProfilePageClient() {
   const [lang, setLang] = useState<"en" | "it">("it");
@@ -22,6 +23,7 @@ export default function ProfilePageClient() {
         <ProfileProjects lang={lang} />
         <ProfileStack lang={lang} />
         <ProfileContact lang={lang} />
+        <Footer lang={lang} prefix="/" />
       </main>
     </MotionConfig>
   );
