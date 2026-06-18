@@ -15,7 +15,6 @@ export default function Hero({ lang }: { lang: "it" | "en" }) {
 
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
 
-  // Measure nav logo position (called once entry animation completes + on resize)
   const measureLogoOffset = () => {
     const navImg = document.querySelector('header img[alt="INEMA"]') as HTMLImageElement;
     const heroImg = logoInnerRef.current?.querySelector("img") as HTMLImageElement;
@@ -35,11 +34,9 @@ export default function Hero({ lang }: { lang: "it" | "en" }) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Keep ref current so the transform mapper always reads the latest measured offset
   const logoOffsetRef = useRef(logoOffset);
   useEffect(() => { logoOffsetRef.current = logoOffset; }, [logoOffset]);
 
-  // Single GPU-accelerated CSS transform string (avoids FM x/y/scale shorthand main-thread cost)
   const logoTransform = useTransform(scrollYProgress, (p: number) => {
     const { x, y, scale } = logoOffsetRef.current;
     const t = Math.min(Math.max(p, 0) / 0.5, 1);
@@ -47,8 +44,7 @@ export default function Hero({ lang }: { lang: "it" | "en" }) {
   });
   const logoOpacity = useTransform(scrollYProgress, [0.4, 0.52], [1, 0]);
 
-  // Text content fades and drifts up
-  const textY       = useTransform(scrollYProgress, [0, 0.4], [0, 40]);
+  const textY       = useTransform(scrollYProgress, [0, 0.4], [0, 50]);
   const textOpacity = useTransform(scrollYProgress, [0, 0.35], [1, 0]);
   const scrollIndOp = useTransform(scrollYProgress, [0, 0.18], [1, 0]);
 
@@ -83,26 +79,36 @@ export default function Hero({ lang }: { lang: "it" | "en" }) {
         justifyContent: "center",
         padding: "120px 24px 80px",
         position: "relative",
-        overflow: "visible",
+        overflow: "hidden",
       }}
     >
-      {/* Background gradient — clipped to section */}
+      {/* Atmospheric light leaks */}
       <div
         style={{
           position: "absolute",
-          inset: 0,
-          overflow: "hidden",
+          top: "-10%",
+          left: "-8%",
+          width: 520,
+          height: 520,
+          borderRadius: "50%",
+          background: "radial-gradient(ellipse, rgba(40,120,180,0.18) 0%, transparent 70%)",
+          filter: "blur(60px)",
           pointerEvents: "none",
         }}
-      >
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background: "radial-gradient(ellipse 70% 60% at 50% 30%, rgba(40,120,180,0.06) 0%, transparent 70%)",
-          }}
-        />
-      </div>
+      />
+      <div
+        style={{
+          position: "absolute",
+          bottom: "-5%",
+          right: "-8%",
+          width: 440,
+          height: 440,
+          borderRadius: "50%",
+          background: "radial-gradient(ellipse, rgba(58,144,204,0.12) 0%, transparent 70%)",
+          filter: "blur(60px)",
+          pointerEvents: "none",
+        }}
+      />
 
       <div style={{ width: "100%", maxWidth: 860, margin: "0 auto", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", position: "relative" }}>
 
@@ -115,23 +121,19 @@ export default function Hero({ lang }: { lang: "it" | "en" }) {
             opacity: { duration: 0.5, ease: "easeOut" },
           }}
           onAnimationComplete={measureLogoOffset}
-          style={{ marginBottom: 48, zIndex: 60, position: "relative" }}
+          style={{ marginBottom: 52, zIndex: 60, position: "relative" }}
         >
           <motion.div
             ref={logoInnerRef}
-            style={{
-              transform: logoTransform,
-              opacity: logoOpacity,
-              position: "relative",
-            }}
+            style={{ transform: logoTransform, opacity: logoOpacity, position: "relative" }}
           >
             <div
               className="logo-orb"
               style={{
                 position: "absolute", top: "50%", left: "50%",
                 transform: "translate(-50%, -50%)",
-                width: "140%", paddingBottom: "140%", borderRadius: "50%",
-                background: "radial-gradient(ellipse at center, rgba(40,120,180,0.16) 0%, rgba(40,120,180,0.05) 50%, transparent 70%)",
+                width: "160%", paddingBottom: "160%", borderRadius: "50%",
+                background: "radial-gradient(ellipse at center, rgba(40,120,180,0.22) 0%, rgba(40,120,180,0.06) 50%, transparent 70%)",
                 pointerEvents: "none", zIndex: 0,
               }}
             />
@@ -140,8 +142,8 @@ export default function Hero({ lang }: { lang: "it" | "en" }) {
               style={{
                 position: "absolute", top: "50%", left: "50%",
                 transform: "translate(-50%, -50%)",
-                width: "115%", paddingBottom: "115%", borderRadius: "50%",
-                border: "0.5px solid rgba(40,120,180,0.18)",
+                width: "120%", paddingBottom: "120%", borderRadius: "50%",
+                border: "0.5px solid rgba(40,120,180,0.30)",
                 pointerEvents: "none", zIndex: 0,
               }}
             />
@@ -155,7 +157,7 @@ export default function Hero({ lang }: { lang: "it" | "en" }) {
           </motion.div>
         </motion.div>
 
-        {/* Content — fades and drifts on scroll */}
+        {/* Content */}
         <motion.div
           style={{ opacity: textOpacity, y: textY, width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}
         >
@@ -164,32 +166,39 @@ export default function Hero({ lang }: { lang: "it" | "en" }) {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.85, ease }}
-            style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}
+            style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}
           >
-            <span style={{ width: 22, height: 1.5, background: "var(--blue)", borderRadius: 2, display: "block" }} />
-            <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--blue)" }}>
+            <span style={{ width: 28, height: 1, background: "var(--blue-mid)", borderRadius: 1, display: "block" }} />
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--blue-mid)" }}>
               {t.eyebrow}
             </span>
-            <span style={{ width: 22, height: 1.5, background: "var(--blue)", borderRadius: 2, display: "block" }} />
+            <span style={{ width: 28, height: 1, background: "var(--blue-mid)", borderRadius: 1, display: "block" }} />
           </motion.div>
 
-          {/* Headline */}
+          {/* Headline — Clash Display editorial */}
           <motion.h1
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.0, ease }}
-            style={{ fontSize: "clamp(42px, 8vw, 76px)", fontWeight: 500, lineHeight: 1.04, letterSpacing: "-0.035em", marginBottom: 22 }}
+            transition={{ duration: 1, delay: 1.0, ease }}
+            style={{
+              fontFamily: "'Clash Display', system-ui, sans-serif",
+              fontSize: "clamp(52px, 9vw, 108px)",
+              fontWeight: 700,
+              lineHeight: 1.0,
+              letterSpacing: "-0.045em",
+              marginBottom: 28,
+              textTransform: "uppercase",
+            }}
           >
-            <span style={{ color: "var(--text-primary)" }}>{t.h1a}</span>
-            <br />
-            <span style={{ color: "var(--text-faint)" }}>{t.h1b}</span>
+            <span style={{ color: "var(--text-primary)", display: "block" }}>{t.h1a}</span>
+            <span style={{ color: "var(--text-faint)", display: "block" }}>{t.h1b}</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.15, ease }}
-            style={{ fontSize: 16, lineHeight: 1.78, color: "var(--text-secondary)", maxWidth: 560, margin: "0 auto 32px" }}
+            transition={{ duration: 0.6, delay: 1.2, ease }}
+            style={{ fontSize: 16, lineHeight: 1.75, color: "var(--text-secondary)", maxWidth: 520, margin: "0 auto 36px" }}
           >
             {t.sub}
           </motion.p>
@@ -197,8 +206,8 @@ export default function Hero({ lang }: { lang: "it" | "en" }) {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 1.3, ease }}
-            style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}
+            transition={{ duration: 0.5, delay: 1.35, ease }}
+            style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}
           >
             <motion.a
               href="#aree"
@@ -207,22 +216,26 @@ export default function Hero({ lang }: { lang: "it" | "en" }) {
               onHoverStart={() => setCtaHovered(true)}
               onHoverEnd={() => setCtaHovered(false)}
               style={{
-                fontSize: 13, fontWeight: 500, padding: "12px 26px", borderRadius: 12,
+                fontSize: 12, fontWeight: 600, letterSpacing: "0.06em",
+                padding: "13px 28px", borderRadius: 2,
                 background: "var(--blue)", color: "#fff", textDecoration: "none",
-                display: "flex", alignItems: "center", gap: 6,
+                display: "flex", alignItems: "center", gap: 8,
+                textTransform: "uppercase",
               }}
             >
               {t.cta}
-              <motion.span style={{ display: "inline-block" }} animate={{ x: ctaHovered ? 3 : 0 }} transition={{ duration: 0.15 }}>→</motion.span>
+              <motion.span style={{ display: "inline-block" }} animate={{ x: ctaHovered ? 4 : 0 }} transition={{ duration: 0.15 }}>→</motion.span>
             </motion.a>
             <motion.a
               href="#contatti"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.97 }}
               style={{
-                fontSize: 13, padding: "12px 26px", borderRadius: 12, textDecoration: "none",
-                color: "var(--text-secondary)", background: "rgba(255,255,255,0.85)",
-                border: "0.5px solid rgba(0,0,0,0.09)",
+                fontSize: 12, fontWeight: 600, letterSpacing: "0.06em",
+                padding: "13px 28px", borderRadius: 2, textDecoration: "none",
+                color: "rgba(255,255,255,0.65)",
+                border: "0.5px solid rgba(255,255,255,0.18)",
+                textTransform: "uppercase",
               }}
             >
               {t.cta2}
@@ -230,7 +243,7 @@ export default function Hero({ lang }: { lang: "it" | "en" }) {
           </motion.div>
         </motion.div>
 
-        {/* Scroll indicator — outer: scroll-linked fade; inner: entry + bounce */}
+        {/* Scroll indicator */}
         <div style={{ position: "absolute", bottom: 36, left: "50%", transform: "translateX(-50%)" }}>
           <motion.div style={{ opacity: scrollIndOp }}>
             <motion.div
@@ -241,7 +254,7 @@ export default function Hero({ lang }: { lang: "it" | "en" }) {
               <motion.div
                 animate={{ y: [0, 6, 0] }}
                 transition={{ repeat: Infinity, duration: 1.8, ease: "linear" }}
-                style={{ width: 1, height: 40, background: "linear-gradient(to bottom, var(--blue), transparent)", borderRadius: 1, margin: "0 auto" }}
+                style={{ width: 1, height: 44, background: "linear-gradient(to bottom, var(--blue-mid), transparent)", borderRadius: 1, margin: "0 auto" }}
               />
             </motion.div>
           </motion.div>

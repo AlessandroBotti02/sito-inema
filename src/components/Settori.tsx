@@ -6,10 +6,10 @@ import { settori } from "@/data/content";
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const accents: Record<string, string> = {
-  retail: "#E8632A",
-  utilities: "#1E7D6B",
-  fashion: "#8B5CF6",
-  industriale: "#2878B4",
+  retail:      "#E8632A",
+  utilities:   "#1E7D6B",
+  fashion:     "#8B5CF6",
+  industriale: "#3A90CC",
 };
 
 export default function Settori({ lang }: { lang: "it" | "en" }) {
@@ -33,20 +33,21 @@ export default function Settori({ lang }: { lang: "it" | "en" }) {
   const accentWords = t.titleAccent.split(" ");
 
   return (
-    <section id="settori" ref={sectionRef} style={{ padding: "100px 24px", position: "relative", overflow: "hidden" }}>
-      {/* Parallax decorative orb */}
+    <section id="settori" ref={sectionRef} style={{ padding: "100px 24px", position: "relative", overflow: "hidden", borderTop: "0.5px solid rgba(255,255,255,0.05)" }}>
+      {/* Parallax glow */}
       <motion.div
         style={{
           y: bgY,
           position: "absolute", top: "20%", left: "-8%",
           width: 420, height: 420, borderRadius: "50%",
-          background: "radial-gradient(ellipse, rgba(40,120,180,0.045) 0%, transparent 70%)",
+          background: "radial-gradient(ellipse, rgba(40,120,180,0.08) 0%, transparent 70%)",
+          filter: "blur(40px)",
           pointerEvents: "none",
         }}
       />
 
       <div style={{ maxWidth: 860, margin: "0 auto", position: "relative" }}>
-        {/* Header with word stagger */}
+        {/* Header */}
         <div style={{ marginBottom: 56 }}>
           <motion.div
             initial={{ opacity: 0, x: -16 }}
@@ -55,22 +56,22 @@ export default function Settori({ lang }: { lang: "it" | "en" }) {
             transition={{ duration: 0.5, ease }}
             style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 18 }}
           >
-            <span style={{ width: 22, height: 1.5, background: "var(--blue)", borderRadius: 2, display: "block" }} />
-            <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--blue)" }}>
+            <span style={{ width: 22, height: 1, background: "var(--blue-mid)", borderRadius: 1, display: "block" }} />
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--blue-mid)" }}>
               {t.label}
             </span>
           </motion.div>
 
-          <h2 style={{ fontSize: "clamp(32px, 6vw, 56px)", fontWeight: 500, lineHeight: 1.12, letterSpacing: "-0.03em" }}>
+          <h2 style={{ fontSize: "clamp(36px, 7vw, 72px)", fontWeight: 700, lineHeight: 1.02, letterSpacing: "-0.04em", textTransform: "uppercase" }}>
             <span style={{ display: "block" }}>
               {titleWords.map((word, i) => (
                 <motion.span
                   key={i}
-                  initial={{ opacity: 0, y: 22 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.35, delay: 0.05 + i * 0.05, ease }}
-                  style={{ display: "inline-block", marginRight: "0.28em", color: "var(--text-primary)" }}
+                  transition={{ duration: 1, delay: 0.05 + i * 0.05, ease }}
+                  style={{ display: "inline-block", marginRight: "0.22em", color: "var(--text-primary)" }}
                 >
                   {word}
                 </motion.span>
@@ -80,11 +81,11 @@ export default function Settori({ lang }: { lang: "it" | "en" }) {
               {accentWords.map((word, i) => (
                 <motion.span
                   key={i}
-                  initial={{ opacity: 0, y: 22 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.35, delay: 0.05 + (titleWords.length + i) * 0.07, ease }}
-                  style={{ display: "inline-block", marginRight: "0.28em", color: "var(--text-faint)" }}
+                  transition={{ duration: 1, delay: 0.05 + (titleWords.length + i) * 0.07, ease }}
+                  style={{ display: "inline-block", marginRight: "0.22em", color: "var(--text-faint)" }}
                 >
                   {word}
                 </motion.span>
@@ -93,7 +94,7 @@ export default function Settori({ lang }: { lang: "it" | "en" }) {
           </h2>
         </div>
 
-        {/* Tabs with layoutId sliding indicator */}
+        {/* Tabs */}
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -110,12 +111,13 @@ export default function Settori({ lang }: { lang: "it" | "en" }) {
                   style={{
                     position: "relative",
                     padding: "10px 20px",
-                    borderRadius: 12,
-                    border: `0.5px solid ${active === s.id ? accents[s.id] + "60" : "rgba(0,0,0,0.09)"}`,
+                    borderRadius: 2,
+                    border: `0.5px solid ${active === s.id ? accents[s.id] + "80" : "rgba(255,255,255,0.12)"}`,
                     cursor: "pointer",
-                    fontSize: 13,
-                    fontWeight: active === s.id ? 500 : 400,
-                    color: active === s.id ? "#fff" : "var(--text-secondary)",
+                    fontSize: 12,
+                    fontWeight: active === s.id ? 600 : 400,
+                    letterSpacing: "0.04em",
+                    color: active === s.id ? "#fff" : "var(--text-muted)",
                     background: "transparent",
                     fontFamily: "inherit",
                     transition: "border-color 0.25s, color 0.25s",
@@ -153,26 +155,26 @@ export default function Settori({ lang }: { lang: "it" | "en" }) {
               <div>
                 <div
                   style={{
-                    display: "inline-block", fontSize: 11, fontWeight: 600,
-                    letterSpacing: "0.08em", textTransform: "uppercase",
-                    color: accent, background: `${accent}14`,
-                    border: `0.5px solid ${accent}38`,
-                    padding: "4px 12px", borderRadius: 20, marginBottom: 20,
+                    display: "inline-block", fontSize: 10, fontWeight: 700,
+                    letterSpacing: "0.12em", textTransform: "uppercase",
+                    color: accent, background: `${accent}18`,
+                    border: `0.5px solid ${accent}40`,
+                    padding: "4px 12px", borderRadius: 2, marginBottom: 20,
                   }}
                 >
                   {current.years[lang]}
                 </div>
-                <h3 style={{ fontSize: 28, fontWeight: 500, letterSpacing: "-0.02em", color: "var(--text-primary)", marginBottom: 16 }}>
+                <h3 style={{ fontSize: 26, fontWeight: 700, letterSpacing: "-0.03em", color: "var(--text-primary)", marginBottom: 14 }}>
                   {current.title[lang]}
                 </h3>
-                <p style={{ fontSize: 15, lineHeight: 1.78, color: "var(--text-secondary)" }}>
+                <p style={{ fontSize: 14, lineHeight: 1.75, color: "var(--text-secondary)" }}>
                   {current.desc[lang]}
                 </p>
               </div>
 
               {/* Right */}
               <div>
-                <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--text-muted)", marginBottom: 16 }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--text-muted)", marginBottom: 16 }}>
                   {t.highlights}
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
@@ -186,8 +188,8 @@ export default function Settori({ lang }: { lang: "it" | "en" }) {
                     >
                       <span
                         style={{
-                          width: 20, height: 20, borderRadius: 6,
-                          background: `${accent}14`, border: `0.5px solid ${accent}30`,
+                          width: 20, height: 20, borderRadius: 2,
+                          background: `${accent}18`, border: `0.5px solid ${accent}35`,
                           display: "flex", alignItems: "center", justifyContent: "center",
                           flexShrink: 0, marginTop: 1,
                         }}

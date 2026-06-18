@@ -1,22 +1,24 @@
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@700,600,500&display=swap');
 @import "tailwindcss";
 
 :root {
-  --bg: #E8EAED;
-  --card: rgba(255, 255, 255, 0.88);
-  --card-border: rgba(0, 0, 0, 0.08);
-  --card-shadow: 0 2px 16px rgba(0,0,0,0.06), 0 0 0 0.5px rgba(0,0,0,0.07);
-  --card-shadow-hover: 0 12px 40px rgba(0,0,0,0.10), 0 0 0 0.5px rgba(0,0,0,0.07);
-  --text-primary: #0A1520;
-  --text-secondary: #4A6070;
-  --text-muted: #5A6E7A;   /* 4.55:1 on --bg — passes WCAG AA */
-  --text-faint: #668594;   /* 3.14:1 on --bg — passes WCAG AA for large text (≥18px) */
+  --bg: #06111E;
+  --card: rgba(255, 255, 255, 0.05);
+  --card-border: rgba(255, 255, 255, 0.09);
+  --card-shadow: 0 2px 20px rgba(0,0,0,0.40), 0 0 0 0.5px rgba(255,255,255,0.07);
+  --card-shadow-hover: 0 16px 48px rgba(0,0,0,0.60), 0 0 0 0.5px rgba(255,255,255,0.12);
+  --text-primary: #FFFFFF;
+  --text-secondary: rgba(255, 255, 255, 0.62);
+  --text-muted: rgba(255, 255, 255, 0.38);
+  --text-faint: #3A90CC;
   --blue: #2878B4;
-  --blue-dark: #1B3E6E;
+  --blue-dark: #1B5E9E;
   --blue-mid: #3A90CC;
-  --blue-bg: rgba(40, 120, 180, 0.08);
-  --blue-border: rgba(40, 120, 180, 0.22);
-  --navy: #1C2E3C;
-  --bg-primary: #F0F2F5;
+  --blue-bg: rgba(40, 120, 180, 0.18);
+  --blue-border: rgba(40, 120, 180, 0.40);
+  --navy: #0C1A2E;
+  --bg-primary: #06111E;
+  --bg-footer: #020B14;
   /* teal→blue aliases for portfolio-derived profile components */
   --teal: var(--blue);
   --teal-dark: var(--blue-dark);
@@ -35,10 +37,14 @@ body {
   overflow-x: hidden;
 }
 
-/* Focus rings — visible to keyboard users, invisible on mouse clicks */
+h1, h2, h3 {
+  font-family: 'Clash Display', -apple-system, system-ui, sans-serif;
+}
+
+/* Focus rings */
 input:focus-visible,
 textarea:focus-visible {
-  box-shadow: 0 0 0 2px rgba(40, 120, 180, 0.25), 0 0 0 1px var(--blue) !important;
+  box-shadow: 0 0 0 2px rgba(40, 120, 180, 0.35), 0 0 0 1px var(--blue) !important;
 }
 
 button:focus-visible,
@@ -50,7 +56,7 @@ a:focus-visible {
 
 button { touch-action: manipulation; }
 
-/* Skip to content link — visible only on keyboard focus */
+/* Skip to content link */
 .skip-link {
   position: absolute;
   left: -9999px;
@@ -69,14 +75,13 @@ button { touch-action: manipulation; }
   background: var(--blue-dark);
   color: #fff;
   padding: 12px 24px;
-  border-radius: 8px;
+  border-radius: 4px;
   font-size: 14px;
   font-weight: 500;
   z-index: 9999;
   text-decoration: none;
 }
 
-/* Respect reduced-motion OS preference for CSS animations */
 @media (prefers-reduced-motion: reduce) {
   .logo-orb,
   .logo-ring,
@@ -87,14 +92,14 @@ button { touch-action: manipulation; }
 
 .card {
   background: var(--card);
-  backdrop-filter: blur(20px) saturate(160%);
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
-  border-radius: 18px;
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border-radius: 2px;
   border: 0.5px solid var(--card-border);
   box-shadow: var(--card-shadow);
 }
 
-::selection { background: rgba(40, 120, 180, 0.16); }
+::selection { background: rgba(40, 120, 180, 0.25); }
 ::-webkit-scrollbar { width: 0; }
 
 section { scroll-margin-top: 80px; }

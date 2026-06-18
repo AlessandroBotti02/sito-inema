@@ -46,8 +46,8 @@ function MemberCard({
             src={`${BASE}${member.avatar}`}
             alt={member.name}
             style={{
-              width: 64,
-              height: 64,
+              width: 60,
+              height: 60,
               borderRadius: "50%",
               objectFit: "cover",
               border: "1.5px solid var(--blue-border)",
@@ -56,8 +56,8 @@ function MemberCard({
         ) : (
           <div
             style={{
-              width: 64,
-              height: 64,
+              width: 60,
+              height: 60,
               borderRadius: "50%",
               background: "var(--blue-bg)",
               border: "1.5px solid var(--blue-border)",
@@ -67,7 +67,7 @@ function MemberCard({
               flexShrink: 0,
             }}
           >
-            <span style={{ fontSize: 16, fontWeight: 600, color: "var(--blue-dark)", letterSpacing: "0.03em" }}>
+            <span style={{ fontSize: 15, fontWeight: 600, color: "var(--blue-mid)", letterSpacing: "0.03em" }}>
               {member.initials}
             </span>
           </div>
@@ -75,10 +75,10 @@ function MemberCard({
 
         {/* Name & Role */}
         <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
-          <p style={{ fontSize: 13, fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.01em", lineHeight: 1.3 }}>
+          <p style={{ fontSize: 12, fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.01em", lineHeight: 1.3 }}>
             {member.name}
           </p>
-          <p style={{ fontSize: 11, color: "var(--text-muted)", lineHeight: 1.4 }}>
+          <p style={{ fontSize: 10, color: "var(--text-muted)", lineHeight: 1.4, letterSpacing: "0.02em" }}>
             {member.role[lang]}
           </p>
         </div>
@@ -88,14 +88,16 @@ function MemberCard({
           <Link
             href={`/team/${member.slug}`}
             style={{
-              fontSize: 11,
-              fontWeight: 500,
-              color: "var(--blue)",
+              fontSize: 10,
+              fontWeight: 700,
+              letterSpacing: "0.08em",
+              color: "var(--blue-mid)",
               textDecoration: "none",
               display: "flex",
               alignItems: "center",
               gap: 3,
               marginTop: 2,
+              textTransform: "uppercase",
             }}
           >
             {lang === "it" ? "→ Profilo" : "→ Profile"}
@@ -117,7 +119,7 @@ export default function Team({ lang }: { lang: "it" | "en" }) {
   }, []);
 
   return (
-    <section id="team" style={{ padding: "0 24px 80px" }} ref={ref}>
+    <section id="team" style={{ padding: "80px 24px", borderTop: "0.5px solid rgba(255,255,255,0.05)" }} ref={ref}>
       <div style={{ maxWidth: 860, margin: "0 auto" }}>
         {/* Eyebrow */}
         <motion.p
@@ -125,12 +127,12 @@ export default function Team({ lang }: { lang: "it" | "en" }) {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, ease }}
           style={{
-            fontSize: 11,
-            fontWeight: 600,
-            letterSpacing: "0.1em",
+            fontSize: 10,
+            fontWeight: 700,
+            letterSpacing: "0.2em",
             textTransform: "uppercase",
-            color: "var(--blue)",
-            marginBottom: 10,
+            color: "var(--blue-mid)",
+            marginBottom: 12,
           }}
         >
           {lang === "it" ? "I nostri Partner e Ingegneri" : "Our Partners & Engineers"}
@@ -140,14 +142,15 @@ export default function Team({ lang }: { lang: "it" | "en" }) {
         <motion.h2
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.55, delay: 0.06, ease }}
+          transition={{ duration: 1, delay: 0.06, ease }}
           style={{
-            fontSize: "clamp(28px, 4vw, 44px)",
-            fontWeight: 500,
-            letterSpacing: "-0.03em",
+            fontSize: "clamp(32px, 6vw, 68px)",
+            fontWeight: 700,
+            letterSpacing: "-0.04em",
+            textTransform: "uppercase",
             color: "var(--text-primary)",
-            lineHeight: 1.1,
-            marginBottom: 36,
+            lineHeight: 1.02,
+            marginBottom: 40,
           }}
         >
           {lang === "it" ? "Le persone che rendono INEMA." : "The people who make INEMA."}
@@ -157,8 +160,8 @@ export default function Team({ lang }: { lang: "it" | "en" }) {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))",
-            gap: 12,
+            gridTemplateColumns: "repeat(auto-fill, minmax(170px, 1fr))",
+            gap: 10,
           }}
         >
           {team.map((member, i) => (

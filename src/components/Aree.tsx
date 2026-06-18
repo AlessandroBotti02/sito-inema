@@ -8,12 +8,12 @@ const ease = [0.22, 1, 0.36, 1] as const;
 const canHover = typeof window !== "undefined" && matchMedia("(hover: hover) and (pointer: fine)").matches;
 
 const icons: Record<string, React.ReactNode> = {
-  strategia:    <LuTarget size={18} />,
-  operations:   <LuActivity size={18} />,
-  improvement:  <LuTrendingUp size={18} />,
-  industrial:   <LuWrench size={18} />,
-  information:  <LuShare2 size={18} />,
-  data:         <LuDatabase size={18} />,
+  strategia:     <LuTarget size={18} />,
+  operations:    <LuActivity size={18} />,
+  improvement:   <LuTrendingUp size={18} />,
+  industrial:    <LuWrench size={18} />,
+  information:   <LuShare2 size={18} />,
+  data:          <LuDatabase size={18} />,
   sostenibilita: <LuLeaf size={18} />,
 };
 
@@ -26,7 +26,7 @@ export default function Aree({ lang }: { lang: "it" | "en" }) {
   }[lang];
 
   return (
-    <section id="aree" style={{ padding: "100px 24px", background: "rgba(255,255,255,0.35)" }}>
+    <section id="aree" style={{ padding: "100px 24px", borderTop: "0.5px solid rgba(255,255,255,0.05)" }}>
       <div style={{ maxWidth: 860, margin: "0 auto" }}>
 
         {/* Header */}
@@ -38,20 +38,19 @@ export default function Aree({ lang }: { lang: "it" | "en" }) {
           style={{ marginBottom: 56 }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 18 }}>
-            <span style={{ width: 22, height: 1.5, background: "var(--blue)", borderRadius: 2, display: "block" }} />
-            <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--blue)" }}>
+            <span style={{ width: 22, height: 1, background: "var(--blue-mid)", borderRadius: 1, display: "block" }} />
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--blue-mid)" }}>
               {t.label}
             </span>
           </div>
-          <h2 style={{ fontSize: "clamp(32px, 6vw, 56px)", fontWeight: 500, lineHeight: 1.08, letterSpacing: "-0.03em" }}>
-            <span style={{ color: "var(--text-primary)" }}>{t.title}</span>
-            <br />
-            <span style={{ color: "var(--text-faint)" }}>{t.titleAccent}</span>
+          <h2 style={{ fontSize: "clamp(36px, 7vw, 72px)", fontWeight: 700, lineHeight: 1.02, letterSpacing: "-0.04em", textTransform: "uppercase" }}>
+            <span style={{ color: "var(--text-primary)", display: "block" }}>{t.title}</span>
+            <span style={{ color: "var(--text-faint)", display: "block" }}>{t.titleAccent}</span>
           </h2>
         </motion.div>
 
         {/* Cards */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
           {aree.map((area, i) => {
             const isOpen = open === area.id;
             return (
@@ -74,21 +73,21 @@ export default function Aree({ lang }: { lang: "it" | "en" }) {
                     alignItems: "center",
                     gap: 18,
                     transition: "background 0.2s",
-                    background: isOpen ? "rgba(40,120,180,0.04)" : "transparent",
+                    background: isOpen ? "rgba(40,120,180,0.08)" : "transparent",
                   }}
                 >
                   <span
                     style={{
                       width: 40,
                       height: 40,
-                      borderRadius: 12,
+                      borderRadius: 2,
                       background: isOpen ? "var(--blue)" : "var(--blue-bg)",
                       border: "0.5px solid var(--blue-border)",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
                       fontSize: 18,
-                      color: isOpen ? "#fff" : "var(--blue)",
+                      color: isOpen ? "#fff" : "var(--blue-mid)",
                       flexShrink: 0,
                       transition: "all 0.25s ease",
                     }}
@@ -96,7 +95,7 @@ export default function Aree({ lang }: { lang: "it" | "en" }) {
                     {icons[area.id]}
                   </span>
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontSize: 15, fontWeight: 500, color: isOpen ? "var(--blue-dark)" : "var(--text-primary)", marginBottom: 2 }}>
+                    <div style={{ fontSize: 15, fontWeight: 500, color: isOpen ? "var(--blue-mid)" : "var(--text-primary)", marginBottom: 2, letterSpacing: "-0.01em" }}>
                       {area.title[lang]}
                     </div>
                     <div style={{ fontSize: 13, color: "var(--text-muted)", lineHeight: 1.5, display: isOpen ? "none" : "block" }}>
@@ -131,12 +130,13 @@ export default function Aree({ lang }: { lang: "it" | "en" }) {
                             <span
                               key={s}
                               style={{
-                                fontSize: 12,
+                                fontSize: 11,
                                 padding: "5px 12px",
-                                borderRadius: 20,
+                                borderRadius: 2,
                                 color: "var(--text-secondary)",
-                                background: "rgba(255,255,255,0.9)",
-                                border: "0.5px solid rgba(0,0,0,0.09)",
+                                background: "rgba(255,255,255,0.06)",
+                                border: "0.5px solid rgba(255,255,255,0.10)",
+                                letterSpacing: "0.02em",
                               }}
                             >
                               {s}

@@ -22,7 +22,6 @@ export default function Nav({ lang, setLang }: { lang: "it" | "en"; setLang: (l:
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 60);
-      // Show nav logo when hero logo has arrived at nav position (~42% of hero height)
       setLogoVisible(window.scrollY > window.innerHeight * 0.42);
     };
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -56,17 +55,17 @@ export default function Nav({ lang, setLang }: { lang: "it" | "en"; setLang: (l:
           width: "100%",
           maxWidth: 1000,
           padding: "8px 20px",
-          borderRadius: 16,
-          background: scrolled ? "rgba(255,255,255,0.93)" : "rgba(255,255,255,0.60)",
-          backdropFilter: "blur(24px) saturate(180%)",
-          WebkitBackdropFilter: "blur(24px) saturate(180%)",
+          borderRadius: 2,
+          background: scrolled ? "rgba(6,17,30,0.90)" : "rgba(6,17,30,0.45)",
+          backdropFilter: "blur(24px) saturate(160%)",
+          WebkitBackdropFilter: "blur(24px) saturate(160%)",
           boxShadow: scrolled
-            ? "0 4px 24px rgba(0,0,0,0.07), 0 0 0 0.5px rgba(0,0,0,0.07)"
-            : "0 0 0 0.5px rgba(0,0,0,0.06)",
+            ? "0 4px 24px rgba(0,0,0,0.35), 0 0 0 0.5px rgba(255,255,255,0.07)"
+            : "0 0 0 0.5px rgba(255,255,255,0.06)",
           transition: "all 0.4s ease",
         }}
       >
-        {/* Logo — appears when hero logo has flown here */}
+        {/* Logo */}
         <a href="#hero" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
           <motion.img
             src={`${BASE}/logo.png`}
@@ -90,9 +89,10 @@ export default function Nav({ lang, setLang }: { lang: "it" | "en"; setLang: (l:
                 style={{
                   position: "relative",
                   padding: "6px 12px",
-                  fontSize: 13,
+                  fontSize: 12,
                   fontWeight: isActive ? 500 : 400,
-                  color: isActive ? "var(--text-primary)" : "var(--text-muted)",
+                  letterSpacing: "0.04em",
+                  color: isActive ? "#fff" : "rgba(255,255,255,0.48)",
                   textDecoration: "none",
                   transition: "color 0.2s ease",
                   display: "flex",
@@ -110,8 +110,8 @@ export default function Nav({ lang, setLang }: { lang: "it" | "en"; setLang: (l:
                     translateX: "-50%",
                     height: 1.5,
                     width: "60%",
-                    background: "var(--blue)",
-                    borderRadius: 2,
+                    background: "var(--blue-mid)",
+                    borderRadius: 1,
                     originX: 0.5,
                   }}
                   animate={{ scaleX: isActive ? 1 : 0 }}
@@ -131,12 +131,13 @@ export default function Nav({ lang, setLang }: { lang: "it" | "en"; setLang: (l:
               alignItems: "center",
               fontSize: 11,
               fontWeight: 600,
-              borderRadius: 20,
-              border: "0.5px solid var(--card-border)",
-              background: "rgba(255,255,255,0.8)",
+              borderRadius: 2,
+              border: "0.5px solid rgba(255,255,255,0.10)",
+              background: "rgba(255,255,255,0.05)",
               overflow: "hidden",
               cursor: "pointer",
               userSelect: "none",
+              letterSpacing: "0.08em",
             }}
           >
             {(["it", "en"] as const).map((l) => (
@@ -144,11 +145,11 @@ export default function Nav({ lang, setLang }: { lang: "it" | "en"; setLang: (l:
                 key={l}
                 style={{
                   padding: "5px 10px",
-                  borderRadius: 20,
+                  borderRadius: 2,
                   background: lang === l ? "var(--blue)" : "transparent",
-                  color: lang === l ? "#fff" : "var(--text-muted)",
+                  color: lang === l ? "#fff" : "rgba(255,255,255,0.40)",
                   transition: "all 0.2s ease",
-                  letterSpacing: "0.06em",
+                  letterSpacing: "0.08em",
                 }}
               >
                 {l.toUpperCase()}
@@ -158,17 +159,27 @@ export default function Nav({ lang, setLang }: { lang: "it" | "en"; setLang: (l:
           <a
             href="#contatti"
             style={{
-              fontSize: 12,
-              fontWeight: 500,
-              padding: "7px 16px",
-              borderRadius: 10,
-              background: "var(--blue)",
+              fontSize: 11,
+              fontWeight: 600,
+              letterSpacing: "0.06em",
+              padding: "7px 18px",
+              borderRadius: 2,
+              border: "0.5px solid rgba(255,255,255,0.20)",
+              background: "transparent",
               color: "#fff",
               textDecoration: "none",
-              letterSpacing: "0.01em",
+              transition: "background 0.2s, border-color 0.2s",
+            }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,1)";
+              (e.currentTarget as HTMLAnchorElement).style.color = "#06111E";
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLAnchorElement).style.background = "transparent";
+              (e.currentTarget as HTMLAnchorElement).style.color = "#fff";
             }}
           >
-            {lang === "it" ? "Contattaci" : "Contact"}
+            {lang === "it" ? "CONTATTACI" : "CONTACT"}
           </a>
         </div>
       </div>

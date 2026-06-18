@@ -37,14 +37,13 @@ export default function Stats({ lang }: { lang: "it" | "en" }) {
   return (
     <section ref={sectionRef} style={{ padding: "0 24px 80px" }}>
       <div style={{ maxWidth: 860, margin: "0 auto" }}>
-        {/* Animated accent line that draws as section enters viewport */}
-        <div style={{ height: 1, overflow: "hidden", background: "rgba(40,120,180,0.07)" }}>
+        <div style={{ height: 1, overflow: "hidden", background: "rgba(255,255,255,0.05)" }}>
           <motion.div
             style={{
               height: "100%",
               scaleX: lineScaleX,
               transformOrigin: "0%",
-              background: "linear-gradient(to right, var(--blue-dark), var(--blue-mid), rgba(40,120,180,0))",
+              background: "linear-gradient(to right, var(--blue-dark), var(--blue-mid), rgba(58,144,204,0))",
             }}
           />
         </div>
@@ -68,13 +67,13 @@ export default function Stats({ lang }: { lang: "it" | "en" }) {
               style={{
                 textAlign: "center",
                 padding: "0 20px",
-                borderRight: i < stats.length - 1 ? "0.5px solid rgba(0,0,0,0.08)" : "none",
+                borderRight: i < stats.length - 1 ? "0.5px solid rgba(255,255,255,0.07)" : "none",
               }}
             >
-              <div style={{ fontSize: 40, fontWeight: 500, letterSpacing: "-0.04em", color: "var(--blue)", lineHeight: 1.1, marginBottom: 6 }}>
+              <div style={{ fontSize: 40, fontWeight: 700, letterSpacing: "-0.04em", color: "var(--blue-mid)", lineHeight: 1.1, marginBottom: 6, fontFamily: "'Clash Display', system-ui, sans-serif" }}>
                 <CountUp value={s.value} inView={inView} />
               </div>
-              <div style={{ fontSize: 12, color: "var(--text-muted)", lineHeight: 1.5 }}>
+              <div style={{ fontSize: 11, color: "var(--text-muted)", lineHeight: 1.5, letterSpacing: "0.04em" }}>
                 {s.label[lang]}
               </div>
             </motion.div>

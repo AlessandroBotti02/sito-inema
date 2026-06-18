@@ -47,8 +47,20 @@ export default function Contatti({ lang }: { lang: "it" | "en" }) {
     setSent(true);
   }
 
+  const inputStyle: React.CSSProperties = {
+    padding: "12px 14px",
+    borderRadius: 2,
+    border: "0.5px solid rgba(255,255,255,0.12)",
+    background: "rgba(255,255,255,0.05)",
+    fontSize: 14,
+    color: "var(--text-primary)",
+    outline: "none",
+    fontFamily: "inherit",
+    WebkitTextFillColor: "var(--text-primary)",
+  };
+
   return (
-    <section id="contatti" style={{ padding: "100px 24px 80px", background: "rgba(255,255,255,0.35)" }}>
+    <section id="contatti" style={{ padding: "100px 24px 80px", borderTop: "0.5px solid rgba(255,255,255,0.05)" }}>
       <div style={{ maxWidth: 860, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "start" }}>
 
         {/* Left */}
@@ -59,31 +71,30 @@ export default function Contatti({ lang }: { lang: "it" | "en" }) {
           transition={{ duration: 0.35, ease }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 18 }}>
-            <span style={{ width: 22, height: 1.5, background: "var(--blue)", borderRadius: 2, display: "block" }} />
-            <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--blue)" }}>
+            <span style={{ width: 22, height: 1, background: "var(--blue-mid)", borderRadius: 1, display: "block" }} />
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--blue-mid)" }}>
               {t.label}
             </span>
           </div>
-          <h2 style={{ fontSize: "clamp(28px, 5vw, 48px)", fontWeight: 500, lineHeight: 1.08, letterSpacing: "-0.03em", marginBottom: 18 }}>
-            <span style={{ color: "var(--text-primary)" }}>{t.title}</span>
-            <br />
-            <span style={{ color: "var(--text-faint)" }}>{t.titleAccent}</span>
+          <h2 style={{ fontSize: "clamp(32px, 6vw, 64px)", fontWeight: 700, lineHeight: 1.02, letterSpacing: "-0.04em", marginBottom: 18, textTransform: "uppercase" }}>
+            <span style={{ color: "var(--text-primary)", display: "block" }}>{t.title}</span>
+            <span style={{ color: "var(--text-faint)", display: "block" }}>{t.titleAccent}</span>
           </h2>
-          <p style={{ fontSize: 14, lineHeight: 1.78, color: "var(--text-secondary)", marginBottom: 36 }}>
+          <p style={{ fontSize: 15, lineHeight: 1.75, color: "var(--text-secondary)", marginBottom: 36 }}>
             {t.sub}
           </p>
 
           <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
             {[t.address1, t.address2, t.tel].map((line) => (
               <div key={line} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
-                <span style={{ width: 4, height: 4, borderRadius: "50%", background: "var(--blue)", flexShrink: 0, marginTop: 7, display: "block" }} />
+                <span style={{ width: 4, height: 4, borderRadius: "50%", background: "var(--blue-mid)", flexShrink: 0, marginTop: 7, display: "block" }} />
                 <span style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.6 }}>{line}</span>
               </div>
             ))}
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginTop: 4 }}>
-              <span style={{ width: 4, height: 4, borderRadius: "50%", background: "var(--blue)", flexShrink: 0, display: "block" }} />
+              <span style={{ width: 4, height: 4, borderRadius: "50%", background: "var(--blue-mid)", flexShrink: 0, display: "block" }} />
               <span style={{ fontSize: 13, color: "var(--text-muted)" }}>{t.or} </span>
-              <a href="mailto:inema@inema.bo.it" style={{ fontSize: 13, color: "var(--blue)", textDecoration: "none", fontWeight: 500 }}>
+              <a href="mailto:inema@inema.bo.it" style={{ fontSize: 13, color: "var(--blue-mid)", textDecoration: "none", fontWeight: 500 }}>
                 inema@inema.bo.it
               </a>
             </div>
@@ -94,20 +105,20 @@ export default function Contatti({ lang }: { lang: "it" | "en" }) {
             style={{
               marginTop: 32,
               padding: "16px 20px",
-              borderRadius: 14,
+              borderRadius: 2,
               background: "var(--blue-bg)",
               border: "0.5px solid var(--blue-border)",
             }}
           >
-            <div style={{ fontSize: 12, fontWeight: 600, color: "var(--blue-dark)", marginBottom: 4 }}>
-              {lang === "it" ? "Lavora con noi" : "Work with us"}
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", color: "var(--blue-mid)", marginBottom: 6 }}>
+              {lang === "it" ? "LAVORA CON NOI" : "WORK WITH US"}
             </div>
-            <p style={{ fontSize: 12, color: "var(--text-secondary)", lineHeight: 1.6 }}>
+            <p style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.6 }}>
               {lang === "it"
                 ? "Cerchiamo professionisti con la passione per la consulenza."
                 : "We look for professionals with a passion for consulting."}
               {" "}
-              <a href="mailto:inema@inema.bo.it" style={{ color: "var(--blue)", textDecoration: "none" }}>
+              <a href="mailto:inema@inema.bo.it" style={{ color: "var(--blue-mid)", textDecoration: "none" }}>
                 {lang === "it" ? "Scrivici →" : "Write to us →"}
               </a>
             </p>
@@ -130,7 +141,7 @@ export default function Contatti({ lang }: { lang: "it" | "en" }) {
               transition={{ duration: 0.4, ease }}
               style={{ textAlign: "center", padding: "40px 0" }}
             >
-              <div style={{ fontSize: 32, marginBottom: 16 }}>✓</div>
+              <div style={{ fontSize: 32, marginBottom: 16, color: "var(--blue-mid)" }}>✓</div>
               <p style={{ fontSize: 14, color: "var(--text-secondary)", lineHeight: 1.7 }}>{t.sent}</p>
             </motion.div>
           ) : (
@@ -140,7 +151,7 @@ export default function Contatti({ lang }: { lang: "it" | "en" }) {
                 { key: "email", label: t.email, type: "email", autoComplete: "email" },
               ].map((field) => (
                 <label key={field.key} style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-                  <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--text-muted)" }}>
+                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--text-muted)" }}>
                     {field.label}
                   </span>
                   <input
@@ -149,21 +160,12 @@ export default function Contatti({ lang }: { lang: "it" | "en" }) {
                     required
                     value={form[field.key as keyof typeof form]}
                     onChange={(e) => setForm(f => ({ ...f, [field.key]: e.target.value }))}
-                    style={{
-                      padding: "12px 14px",
-                      borderRadius: 10,
-                      border: "0.5px solid rgba(0,0,0,0.12)",
-                      background: "rgba(255,255,255,0.9)",
-                      fontSize: 14,
-                      color: "var(--text-primary)",
-                      outline: "none",
-                      fontFamily: "inherit",
-                    }}
+                    style={inputStyle}
                   />
                 </label>
               ))}
               <label style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-                <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--text-muted)" }}>
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--text-muted)" }}>
                   {t.messaggio}
                 </span>
                 <textarea
@@ -172,18 +174,7 @@ export default function Contatti({ lang }: { lang: "it" | "en" }) {
                   autoComplete="off"
                   value={form.messaggio}
                   onChange={(e) => setForm(f => ({ ...f, messaggio: e.target.value }))}
-                  style={{
-                    padding: "12px 14px",
-                    borderRadius: 10,
-                    border: "0.5px solid rgba(0,0,0,0.12)",
-                    background: "rgba(255,255,255,0.9)",
-                    fontSize: 14,
-                    color: "var(--text-primary)",
-                    outline: "none",
-                    resize: "vertical",
-                    fontFamily: "inherit",
-                    lineHeight: 1.6,
-                  }}
+                  style={{ ...inputStyle, resize: "vertical", lineHeight: 1.6 }}
                 />
               </label>
               <motion.button
@@ -192,12 +183,14 @@ export default function Contatti({ lang }: { lang: "it" | "en" }) {
                 whileTap={{ scale: 0.97 }}
                 style={{
                   padding: "13px 24px",
-                  borderRadius: 12,
+                  borderRadius: 2,
                   border: "none",
                   background: "var(--blue)",
                   color: "#fff",
-                  fontSize: 14,
-                  fontWeight: 500,
+                  fontSize: 12,
+                  fontWeight: 700,
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
                   cursor: "pointer",
                   fontFamily: "inherit",
                   marginTop: 4,

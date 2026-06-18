@@ -47,8 +47,45 @@ export default function Footer({ lang }: { lang: "it" | "en" }) {
   }[lang];
 
   return (
-    <footer style={{ background: "#0C1A2E" }}>
-      <div style={{ maxWidth: 860, margin: "0 auto", padding: "64px 24px 0" }}>
+    <footer style={{ background: "var(--bg-footer, #020B14)", position: "relative", overflow: "hidden" }}>
+      {/* Ghost brand mark */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: -40,
+          left: "50%",
+          transform: "translateX(-50%)",
+          fontSize: "clamp(80px, 18vw, 200px)",
+          fontFamily: "'Clash Display', system-ui, sans-serif",
+          fontWeight: 700,
+          letterSpacing: "-0.05em",
+          color: "rgba(255,255,255,0.03)",
+          whiteSpace: "nowrap",
+          pointerEvents: "none",
+          userSelect: "none",
+          lineHeight: 1,
+        }}
+      >
+        INEMA
+      </div>
+
+      {/* Atmospheric glow */}
+      <div
+        style={{
+          position: "absolute",
+          top: "30%",
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: 600,
+          height: 300,
+          borderRadius: "50%",
+          background: "radial-gradient(ellipse, rgba(40,120,180,0.08) 0%, transparent 70%)",
+          filter: "blur(60px)",
+          pointerEvents: "none",
+        }}
+      />
+
+      <div style={{ maxWidth: 860, margin: "0 auto", padding: "72px 24px 0", position: "relative" }}>
 
         {/* Brand + CTA */}
         <motion.div
@@ -63,7 +100,7 @@ export default function Footer({ lang }: { lang: "it" | "en" }) {
             flexWrap: "wrap",
             gap: 32,
             paddingBottom: 48,
-            borderBottom: "0.5px solid rgba(255,255,255,0.08)",
+            borderBottom: "0.5px solid rgba(255,255,255,0.07)",
             marginBottom: 48,
           }}
         >
@@ -73,15 +110,9 @@ export default function Footer({ lang }: { lang: "it" | "en" }) {
               alt="INEMA"
               width={128}
               height={32}
-              style={{
-                height: 32,
-                width: "auto",
-                objectFit: "contain",
-                marginBottom: 16,
-                display: "block",
-              }}
+              style={{ height: 32, width: "auto", objectFit: "contain", marginBottom: 16, display: "block" }}
             />
-            <p style={{ fontSize: 13, color: "rgba(255,255,255,0.38)", lineHeight: 1.65, maxWidth: 280 }}>
+            <p style={{ fontSize: 13, color: "rgba(255,255,255,0.32)", lineHeight: 1.65, maxWidth: 260 }}>
               {t.tagline}
             </p>
           </div>
@@ -94,12 +125,14 @@ export default function Footer({ lang }: { lang: "it" | "en" }) {
               display: "inline-flex",
               alignItems: "center",
               gap: 8,
-              fontSize: 13,
-              fontWeight: 500,
+              fontSize: 11,
+              fontWeight: 700,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
               color: "#fff",
               textDecoration: "none",
-              padding: "11px 22px",
-              borderRadius: 12,
+              padding: "12px 24px",
+              borderRadius: 2,
               background: "var(--blue)",
               border: "none",
               flexShrink: 0,
@@ -125,14 +158,7 @@ export default function Footer({ lang }: { lang: "it" | "en" }) {
         >
           {/* Navigate */}
           <div>
-            <div style={{
-              fontSize: 10,
-              fontWeight: 600,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              color: "rgba(255,255,255,0.25)",
-              marginBottom: 18,
-            }}>
+            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.22)", marginBottom: 18 }}>
               {t.navLabel}
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 11 }}>
@@ -142,7 +168,7 @@ export default function Footer({ lang }: { lang: "it" | "en" }) {
                   href={l.href}
                   whileHover={canHover ? { color: "rgba(255,255,255,0.9)", x: 2 } : {}}
                   transition={{ duration: 0.15 }}
-                  style={{ fontSize: 13, color: "rgba(255,255,255,0.5)", textDecoration: "none" }}
+                  style={{ fontSize: 13, color: "rgba(255,255,255,0.44)", textDecoration: "none" }}
                 >
                   {l.label}
                 </motion.a>
@@ -152,14 +178,7 @@ export default function Footer({ lang }: { lang: "it" | "en" }) {
 
           {/* Contact info */}
           <div>
-            <div style={{
-              fontSize: 10,
-              fontWeight: 600,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              color: "rgba(255,255,255,0.25)",
-              marginBottom: 18,
-            }}>
+            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.22)", marginBottom: 18 }}>
               {t.contactLabel}
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 11 }}>
@@ -167,29 +186,18 @@ export default function Footer({ lang }: { lang: "it" | "en" }) {
                 href="mailto:inema@inema.bo.it"
                 whileHover={canHover ? { color: "rgba(110,179,232,1)" } : {}}
                 transition={{ duration: 0.15 }}
-                style={{ fontSize: 13, fontWeight: 500, color: "rgba(110,179,232,0.85)", textDecoration: "none" }}
+                style={{ fontSize: 13, fontWeight: 500, color: "rgba(110,179,232,0.80)", textDecoration: "none" }}
               >
                 inema@inema.bo.it
               </motion.a>
-              <span style={{ fontSize: 13, color: "rgba(255,255,255,0.4)" }}>
-                {t.tel}
-              </span>
-              <span style={{ fontSize: 12, color: "rgba(255,255,255,0.3)", lineHeight: 1.55 }}>
-                {t.address}
-              </span>
+              <span style={{ fontSize: 13, color: "rgba(255,255,255,0.35)" }}>{t.tel}</span>
+              <span style={{ fontSize: 12, color: "rgba(255,255,255,0.25)", lineHeight: 1.55 }}>{t.address}</span>
             </div>
           </div>
 
-          {/* Partners / Social */}
+          {/* Partners */}
           <div>
-            <div style={{
-              fontSize: 10,
-              fontWeight: 600,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              color: "rgba(255,255,255,0.25)",
-              marginBottom: 18,
-            }}>
+            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.22)", marginBottom: 18 }}>
               {t.partnerLabel}
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 11 }}>
@@ -199,7 +207,7 @@ export default function Footer({ lang }: { lang: "it" | "en" }) {
                 rel="noopener noreferrer"
                 whileHover={canHover ? { color: "rgba(255,255,255,0.9)", x: 2 } : {}}
                 transition={{ duration: 0.15 }}
-                style={{ fontSize: 13, fontWeight: 500, color: "rgba(255,255,255,0.55)", textDecoration: "none" }}
+                style={{ fontSize: 13, fontWeight: 500, color: "rgba(255,255,255,0.50)", textDecoration: "none" }}
               >
                 LinkedIn →
               </motion.a>
@@ -207,9 +215,9 @@ export default function Footer({ lang }: { lang: "it" | "en" }) {
                 href="https://www.fitstrategy.it"
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={canHover ? { color: "rgba(255,255,255,0.7)", x: 2 } : {}}
+                whileHover={canHover ? { color: "rgba(255,255,255,0.65)", x: 2 } : {}}
                 transition={{ duration: 0.15 }}
-                style={{ fontSize: 13, color: "rgba(255,255,255,0.38)", textDecoration: "none" }}
+                style={{ fontSize: 13, color: "rgba(255,255,255,0.32)", textDecoration: "none" }}
               >
                 FIT Strategy ↗
               </motion.a>
@@ -219,7 +227,7 @@ export default function Footer({ lang }: { lang: "it" | "en" }) {
       </div>
 
       {/* Bottom bar */}
-      <div style={{ borderTop: "0.5px solid rgba(255,255,255,0.06)" }}>
+      <div style={{ borderTop: "0.5px solid rgba(255,255,255,0.05)", position: "relative" }}>
         <div style={{
           maxWidth: 860,
           margin: "0 auto",
@@ -230,8 +238,8 @@ export default function Footer({ lang }: { lang: "it" | "en" }) {
           flexWrap: "wrap",
           gap: 8,
         }}>
-          <span style={{ fontSize: 11, color: "rgba(255,255,255,0.2)" }}>{t.copyright}</span>
-          <span style={{ fontSize: 11, color: "rgba(255,255,255,0.2)" }}>{t.partnership} SSMI</span>
+          <span style={{ fontSize: 10, letterSpacing: "0.08em", color: "rgba(255,255,255,0.18)" }}>{t.copyright}</span>
+          <span style={{ fontSize: 10, letterSpacing: "0.08em", color: "rgba(255,255,255,0.18)" }}>{t.partnership} SSMI</span>
         </div>
       </div>
     </footer>
