@@ -10,7 +10,6 @@ import Aree from "@/components/Aree";
 import Settori from "@/components/Settori";
 import Contatti from "@/components/Contatti";
 import Footer from "@/components/Footer";
-import LoadingScreen from "@/components/LoadingScreen";
 import Team from "@/components/Team";
 
 export default function Home() {
@@ -18,7 +17,6 @@ export default function Home() {
 
   return (
     <MotionConfig reducedMotion="user">
-      <LoadingScreen />
       <a href="#hero" className="skip-link">
         {lang === "it" ? "Salta al contenuto principale" : "Skip to main content"}
       </a>
