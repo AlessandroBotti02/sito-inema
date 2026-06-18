@@ -61,7 +61,7 @@ export default function Contatti({ lang }: { lang: "it" | "en" }) {
 
   return (
     <section id="contatti" style={{ padding: "100px clamp(24px, 5vw, 80px) 80px", borderTop: "0.5px solid rgba(255,255,255,0.05)" }}>
-      <div style={{ maxWidth: 1000, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "start" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "start" }}>
 
         {/* Left */}
         <motion.div
@@ -76,7 +76,7 @@ export default function Contatti({ lang }: { lang: "it" | "en" }) {
               {t.label}
             </span>
           </div>
-          <h2 style={{ fontSize: "clamp(32px, 6vw, 64px)", fontWeight: 700, lineHeight: 1.02, letterSpacing: "-0.04em", marginBottom: 18, textTransform: "uppercase" }}>
+          <h2 style={{ fontSize: "clamp(26px, 3.2vw, 46px)", fontWeight: 500, lineHeight: 1.05, letterSpacing: "-0.04em", marginBottom: 18, textTransform: "uppercase" }}>
             <span style={{ color: "var(--text-primary)", display: "block" }}>{t.title}</span>
             <span style={{ color: "var(--text-faint)", display: "block" }}>{t.titleAccent}</span>
           </h2>

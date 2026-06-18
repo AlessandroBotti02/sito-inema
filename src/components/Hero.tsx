@@ -105,8 +105,8 @@ export default function Hero({ lang }: { lang: "it" | "en" }) {
             transition={{ duration: 1, delay: 0.45, ease }}
             style={{
               fontFamily: "'Clash Display', system-ui, sans-serif",
-              fontSize: "clamp(52px, 9vw, 108px)",
-              fontWeight: 700,
+              fontSize: "clamp(36px, 5.5vw, 72px)",
+              fontWeight: 600,
               lineHeight: 1.0,
               letterSpacing: "-0.045em",
               marginBottom: 28,

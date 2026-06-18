@@ -51,7 +51,7 @@ export default function Settori({ lang }: { lang: "it" | "en" }) {
                 {t.label}
               </span>
             </div>
-            <h2 style={{ fontSize: "clamp(36px, 6vw, 72px)", fontWeight: 700, lineHeight: 1.02, letterSpacing: "-0.04em", textTransform: "uppercase", margin: 0 }}>
+            <h2 style={{ fontSize: "clamp(26px, 3.2vw, 46px)", fontWeight: 500, lineHeight: 1.05, letterSpacing: "-0.04em", textTransform: "uppercase", margin: 0 }}>
               <span style={{ color: "var(--text-primary)" }}>{t.title} </span>
               <span style={{ color: "var(--text-faint)" }}>{t.titleAccent}</span>
             </h2>
@@ -112,7 +112,7 @@ export default function Settori({ lang }: { lang: "it" | "en" }) {
                   {t.label}
                 </span>
               </div>
-              <h2 style={{ fontSize: "clamp(36px, 6vw, 72px)", fontWeight: 700, lineHeight: 1.02, letterSpacing: "-0.04em", textTransform: "uppercase", margin: 0 }}>
+              <h2 style={{ fontSize: "clamp(26px, 3.2vw, 46px)", fontWeight: 500, lineHeight: 1.05, letterSpacing: "-0.04em", textTransform: "uppercase", margin: 0 }}>
                 <span style={{ color: "var(--text-primary)" }}>{t.title} </span>
                 <span style={{ color: "var(--text-faint)" }}>{t.titleAccent}</span>
               </h2>
