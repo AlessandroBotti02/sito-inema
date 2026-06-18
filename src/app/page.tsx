@@ -25,10 +25,10 @@ export default function Home() {
         <Nav lang={lang} setLang={setLang} />
         <Hero lang={lang} />
         <Stats lang={lang} />
-        <Team lang={lang} />
         <ChiSiamo lang={lang} />
         <Aree lang={lang} />
         <Settori lang={lang} />
+        <Team lang={lang} />
         <Contatti lang={lang} />
         <Footer lang={lang} />
       </main>
