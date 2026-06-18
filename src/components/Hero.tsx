@@ -46,7 +46,6 @@ export default function Hero({ lang }: { lang: "it" | "en" }) {
 
   const textY       = useTransform(scrollYProgress, [0, 0.4], [0, 50]);
   const textOpacity = useTransform(scrollYProgress, [0, 0.35], [1, 0]);
-  const scrollIndOp = useTransform(scrollYProgress, [0, 0.18], [1, 0]);
 
   const t = {
     it: {
@@ -82,8 +81,11 @@ export default function Hero({ lang }: { lang: "it" | "en" }) {
         overflow: "hidden",
       }}
     >
-      {/* Atmospheric light leaks */}
-      <div
+      {/* Atmospheric glows — stagger in with the rest */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.4 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 2.4, delay: 0, ease: "easeOut" }}
         style={{
           position: "absolute",
           top: "-10%",
@@ -96,7 +98,10 @@ export default function Hero({ lang }: { lang: "it" | "en" }) {
           pointerEvents: "none",
         }}
       />
-      <div
+      <motion.div
+        initial={{ opacity: 0, scale: 0.4 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 2.4, delay: 0.35, ease: "easeOut" }}
         style={{
           position: "absolute",
           bottom: "-5%",
@@ -112,14 +117,11 @@ export default function Hero({ lang }: { lang: "it" | "en" }) {
 
       <div style={{ width: "100%", maxWidth: 860, margin: "0 auto", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", position: "relative" }}>
 
-        {/* Logo — outer: entry scale 2.5→1; inner: scroll fly-to-nav */}
+        {/* Logo — same stagger-in as text, then flies to nav on scroll */}
         <motion.div
-          initial={{ scale: 2.5, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{
-            scale: { duration: 1.6, ease },
-            opacity: { duration: 0.5, ease: "easeOut" },
-          }}
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.75, delay: 0.15, ease }}
           onAnimationComplete={measureLogoOffset}
           style={{ marginBottom: 52, zIndex: 60, position: "relative" }}
         >
@@ -134,16 +136,6 @@ export default function Hero({ lang }: { lang: "it" | "en" }) {
                 transform: "translate(-50%, -50%)",
                 width: "160%", paddingBottom: "160%", borderRadius: "50%",
                 background: "radial-gradient(ellipse at center, rgba(40,120,180,0.22) 0%, rgba(40,120,180,0.06) 50%, transparent 70%)",
-                pointerEvents: "none", zIndex: 0,
-              }}
-            />
-            <div
-              className="logo-ring"
-              style={{
-                position: "absolute", top: "50%", left: "50%",
-                transform: "translate(-50%, -50%)",
-                width: "120%", paddingBottom: "120%", borderRadius: "50%",
-                border: "0.5px solid rgba(40,120,180,0.30)",
                 pointerEvents: "none", zIndex: 0,
               }}
             />
@@ -165,7 +157,7 @@ export default function Hero({ lang }: { lang: "it" | "en" }) {
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.85, ease }}
+            transition={{ duration: 0.6, delay: 0.45, ease }}
             style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}
           >
             <span style={{ width: 28, height: 1, background: "var(--blue-mid)", borderRadius: 1, display: "block" }} />
@@ -175,11 +167,11 @@ export default function Hero({ lang }: { lang: "it" | "en" }) {
             <span style={{ width: 28, height: 1, background: "var(--blue-mid)", borderRadius: 1, display: "block" }} />
           </motion.div>
 
-          {/* Headline — Clash Display editorial */}
+          {/* Headline */}
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1.0, ease }}
+            transition={{ duration: 1, delay: 0.6, ease }}
             style={{
               fontFamily: "'Clash Display', system-ui, sans-serif",
               fontSize: "clamp(52px, 9vw, 108px)",
@@ -197,7 +189,7 @@ export default function Hero({ lang }: { lang: "it" | "en" }) {
           <motion.p
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.2, ease }}
+            transition={{ duration: 0.6, delay: 0.8, ease }}
             style={{ fontSize: 16, lineHeight: 1.75, color: "var(--text-secondary)", maxWidth: 520, margin: "0 auto 36px" }}
           >
             {t.sub}
@@ -206,7 +198,7 @@ export default function Hero({ lang }: { lang: "it" | "en" }) {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 1.35, ease }}
+            transition={{ duration: 0.5, delay: 0.95, ease }}
             style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}
           >
             <motion.a
@@ -243,22 +235,6 @@ export default function Hero({ lang }: { lang: "it" | "en" }) {
           </motion.div>
         </motion.div>
 
-        {/* Scroll indicator */}
-        <div style={{ position: "absolute", bottom: 36, left: "50%", transform: "translateX(-50%)" }}>
-          <motion.div style={{ opacity: scrollIndOp }}>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 1.6 }}
-            >
-              <motion.div
-                animate={{ y: [0, 6, 0] }}
-                transition={{ repeat: Infinity, duration: 1.8, ease: "linear" }}
-                style={{ width: 1, height: 44, background: "linear-gradient(to bottom, var(--blue-mid), transparent)", borderRadius: 1, margin: "0 auto" }}
-              />
-            </motion.div>
-          </motion.div>
-        </div>
       </div>
     </motion.section>
   );
