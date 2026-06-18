@@ -164,7 +164,7 @@ export default function Team({ lang }: { lang: "it" | "en" }) {
             {lang === "it" ? "I nostri Partner e Ingegneri" : "Our Partners & Engineers"}
           </span>
         </div>
-        <h2 style={{ fontSize: "clamp(36px, 6vw, 72px)", fontWeight: 700, letterSpacing: "-0.04em", textTransform: "uppercase", lineHeight: 1.02, margin: 0 }}>
+        <h2 style={{ fontSize: "clamp(26px, 3.2vw, 46px)", fontWeight: 500, letterSpacing: "-0.04em", textTransform: "uppercase", lineHeight: 1.05, margin: 0 }}>
           <span style={{ color: "var(--text-primary)" }}>
             {lang === "it" ? "Le persone che rendono " : "The people who make "}
           </span>
