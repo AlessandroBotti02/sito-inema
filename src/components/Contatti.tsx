@@ -60,8 +60,8 @@ export default function Contatti({ lang }: { lang: "it" | "en" }) {
   };
 
   return (
-    <section id="contatti" style={{ padding: "100px 24px 80px", borderTop: "0.5px solid rgba(255,255,255,0.05)" }}>
-      <div style={{ maxWidth: 860, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "start" }}>
+    <section id="contatti" style={{ padding: "100px clamp(24px, 5vw, 80px) 80px", borderTop: "0.5px solid rgba(255,255,255,0.05)" }}>
+      <div style={{ maxWidth: 1000, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "start" }}>
 
         {/* Left */}
         <motion.div
