@@ -29,8 +29,8 @@ const orbit2 = {
   duration: 34,
   direction: -1,
   color: "var(--text-secondary)",
-  bg: "rgba(255,255,255,0.95)",
-  border: "rgba(0,0,0,0.07)",
+  bg: "rgba(255,255,255,0.06)",
+  border: "rgba(255,255,255,0.10)",
 };
 
 const orbit3 = {
@@ -46,8 +46,8 @@ const orbit3 = {
   duration: 52,
   direction: 1,
   color: "var(--text-muted)",
-  bg: "rgba(255,255,255,0.8)",
-  border: "rgba(0,0,0,0.05)",
+  bg: "rgba(255,255,255,0.05)",
+  border: "rgba(255,255,255,0.08)",
 };
 
 type OrbitConfig = typeof orbit1;

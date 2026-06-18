@@ -50,13 +50,13 @@ export default function ProfileNav({ lang, setLang }: { lang: "en" | "it"; setLa
           width: "100%",
           maxWidth: 900,
           padding: "8px 20px",
-          borderRadius: 16,
-          background: scrolled ? "rgba(255,255,255,0.92)" : "rgba(255,255,255,0.65)",
-          backdropFilter: "blur(20px) saturate(180%)",
-          WebkitBackdropFilter: "blur(20px) saturate(180%)",
+          borderRadius: 2,
+          background: scrolled ? "rgba(6,17,30,0.90)" : "rgba(6,17,30,0.45)",
+          backdropFilter: "blur(24px) saturate(160%)",
+          WebkitBackdropFilter: "blur(24px) saturate(160%)",
           boxShadow: scrolled
-            ? "0 4px 24px rgba(0,0,0,0.07), 0 0 0 0.5px rgba(0,0,0,0.07)"
-            : "0 0 0 0.5px rgba(0,0,0,0.07)",
+            ? "0 4px 24px rgba(0,0,0,0.35), 0 0 0 0.5px rgba(255,255,255,0.07)"
+            : "0 0 0 0.5px rgba(255,255,255,0.06)",
           transition: "all 0.35s ease",
         }}
       >
@@ -97,9 +97,9 @@ export default function ProfileNav({ lang, setLang }: { lang: "en" | "it"; setLa
                 style={{
                   position: "relative",
                   padding: "6px 11px",
-                  fontSize: 13,
+                  fontSize: 12,
                   fontWeight: isActive ? 500 : 400,
-                  color: isActive ? "var(--text-primary)" : "var(--text-muted)",
+                  color: isActive ? "#fff" : "rgba(255,255,255,0.48)",
                   textDecoration: "none",
                   transition: "color 0.2s ease",
                   display: "flex",
@@ -138,9 +138,9 @@ export default function ProfileNav({ lang, setLang }: { lang: "en" | "it"; setLa
             gap: 0,
             fontSize: 11,
             fontWeight: 600,
-            borderRadius: 20,
-            border: "0.5px solid var(--card-border)",
-            background: "rgba(255,255,255,0.8)",
+            borderRadius: 2,
+            border: "0.5px solid rgba(255,255,255,0.10)",
+            background: "rgba(255,255,255,0.05)",
             overflow: "hidden",
             cursor: "pointer",
             userSelect: "none",

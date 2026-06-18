@@ -140,13 +140,13 @@ export default function ProfileAbout({ lang }: { lang: "en" | "it" }) {
                 { flag: "🇫🇷", lang: "Français", level: "A2" },
               ].map((l) => (
                 <span key={l.lang} style={{
-                  fontSize: 11, padding: "4px 10px", borderRadius: 20,
-                  background: "rgba(255,255,255,0.9)", border: "0.5px solid rgba(0,0,0,0.08)",
+                  fontSize: 11, padding: "4px 10px", borderRadius: 2,
+                  background: "rgba(255,255,255,0.06)", border: "0.5px solid rgba(255,255,255,0.10)",
                   color: "var(--text-secondary)", display: "flex", alignItems: "center", gap: 5,
                 }}>
                   <span>{l.flag}</span>
                   <span>{l.lang}</span>
-                  <span style={{ color: "var(--text-faint)", fontSize: 10 }}>{l.level}</span>
+                  <span style={{ color: "var(--text-muted)", fontSize: 10 }}>{l.level}</span>
                 </span>
               ))}
             </div>
@@ -183,15 +183,15 @@ export default function ProfileAbout({ lang }: { lang: "en" | "it" }) {
                     )}
                   </div>
                   <div style={{ paddingBottom: 2, flex: 1 }}>
-                    <p style={{ fontSize: 10, color: "var(--text-faint)", marginBottom: 2, letterSpacing: "0.03em" }}>{item.year}</p>
-                    <p style={{ fontSize: 12, fontWeight: 600, color: item.active ? "var(--navy)" : "var(--text-secondary)", marginBottom: 1 }}>
+                    <p style={{ fontSize: 10, color: "var(--text-muted)", marginBottom: 2, letterSpacing: "0.03em" }}>{item.year}</p>
+                    <p style={{ fontSize: 12, fontWeight: 600, color: item.active ? "var(--text-primary)" : "var(--text-secondary)", marginBottom: 1 }}>
                       {lang === "en" ? item.en : item.it}
                     </p>
                     <p style={{ fontSize: 11, color: item.active ? "var(--teal-dark)" : "var(--text-muted)", marginBottom: item.detail ? 3 : 0 }}>
                       {item.place}
                     </p>
                     {item.detail && (
-                      <p style={{ fontSize: 10.5, color: "var(--text-faint)", lineHeight: 1.45, fontStyle: "italic" }}>
+                      <p style={{ fontSize: 10.5, color: "var(--text-muted)", lineHeight: 1.45, fontStyle: "italic" }}>
                         {lang === "en" ? item.detail.en : item.detail.it}
                       </p>
                     )}

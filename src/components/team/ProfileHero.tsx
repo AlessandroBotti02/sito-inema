@@ -25,7 +25,7 @@ function CtaPrimary({ label, href }: { label: string; href: string }) {
       whileTap={{ scale: 0.98 }}
       transition={arrowSpring}
       style={{
-        fontSize: 13, fontWeight: 500, padding: "11px 24px", borderRadius: 12,
+        fontSize: 13, fontWeight: 500, padding: "11px 24px", borderRadius: 2,
         background: "var(--blue)", color: "#fff", textDecoration: "none",
         display: "flex", alignItems: "center", gap: 6,
       }}
@@ -91,7 +91,7 @@ export default function ProfileHero({ lang }: { lang: "en" | "it" }) {
             <motion.h1
               initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, delay: 0.18, ease }}
-              style={{ fontSize: 68, fontWeight: 500, lineHeight: 1.03, letterSpacing: "-0.035em", marginBottom: 20 }}
+              style={{ fontSize: "clamp(44px, 7vw, 80px)", fontWeight: 700, lineHeight: 1.02, letterSpacing: "-0.045em", textTransform: "uppercase", fontFamily: "'Clash Display', system-ui, sans-serif", marginBottom: 20 }}
             >
               <span style={{ color: "var(--text-primary)" }}>{t.h1a}</span>
               <br />
@@ -114,10 +114,10 @@ export default function ProfileHero({ lang }: { lang: "en" | "it" }) {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.35, delay: 0.55 + i * 0.07, ease }}
                   style={{
-                    fontSize: 11, padding: "5px 12px", borderRadius: 20,
+                    fontSize: 11, padding: "5px 12px", borderRadius: 2,
                     color: c.teal ? "var(--teal-dark)" : "var(--text-muted)",
-                    background: c.teal ? "var(--teal-bg)" : "rgba(138,155,168,0.08)",
-                    border: `0.5px solid ${c.teal ? "var(--teal-border)" : "rgba(138,155,168,0.2)"}`,
+                    background: c.teal ? "var(--teal-bg)" : "rgba(255,255,255,0.05)",
+                    border: `0.5px solid ${c.teal ? "var(--teal-border)" : "rgba(255,255,255,0.10)"}`,
                   }}
                 >
                   {c.label}
@@ -137,9 +137,9 @@ export default function ProfileHero({ lang }: { lang: "en" | "it" }) {
                 whileTap={{ scale: 0.98 }}
                 transition={arrowSpring}
                 style={{
-                  fontSize: 13, padding: "11px 24px", borderRadius: 12, textDecoration: "none",
-                  color: "var(--text-secondary)", background: "rgba(255,255,255,0.85)",
-                  border: "0.5px solid rgba(0,0,0,0.1)",
+                  fontSize: 13, padding: "11px 24px", borderRadius: 2, textDecoration: "none",
+                  color: "var(--text-secondary)", background: "rgba(255,255,255,0.06)",
+                  border: "0.5px solid rgba(255,255,255,0.12)",
                 }}
               >
                 {t.cta2}

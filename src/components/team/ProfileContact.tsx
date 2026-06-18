@@ -63,7 +63,7 @@ export default function ProfileContact({ lang }: { lang: "en" | "it" }) {
             </div>
 
             <div>
-              <p style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--text-faint)", marginBottom: 6 }}>
+              <p style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--text-muted)", marginBottom: 6 }}>
                 {t.label}
               </p>
               <motion.h2
@@ -93,7 +93,7 @@ export default function ProfileContact({ lang }: { lang: "en" | "it" }) {
               whileTap={{ scale: 0.98 }}
               transition={btnSpring}
               style={{
-                fontSize: 13, fontWeight: 500, padding: "11px 26px", borderRadius: 12,
+                fontSize: 13, fontWeight: 500, padding: "11px 26px", borderRadius: 2,
                 background: "var(--teal)", color: "#fff", textDecoration: "none",
                 display: "flex", alignItems: "center", gap: 6,
               }}
@@ -108,10 +108,10 @@ export default function ProfileContact({ lang }: { lang: "en" | "it" }) {
               whileTap={{ scale: 0.98 }}
               transition={btnSpring}
               style={{
-                fontSize: 13, padding: "11px 26px", borderRadius: 12, textDecoration: "none",
+                fontSize: 13, padding: "11px 26px", borderRadius: 2, textDecoration: "none",
                 color: "var(--text-secondary)",
-                background: "rgba(255,255,255,0.85)",
-                border: "0.5px solid rgba(0,0,0,0.1)",
+                background: "rgba(255,255,255,0.06)",
+                border: "0.5px solid rgba(255,255,255,0.12)",
               }}
             >
               {t.linkedin} ↗
@@ -125,8 +125,8 @@ export default function ProfileContact({ lang }: { lang: "en" | "it" }) {
           transition={{ duration: 0.5, delay: 0.35 }}
           style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 20, padding: "0 4px" }}
         >
-          <span style={{ fontSize: 11, color: "var(--text-faint)" }}>Alessandro Botti © 2026</span>
-          <span style={{ fontSize: 11, color: "var(--text-faint)" }}>{t.footer}</span>
+          <span style={{ fontSize: 11, color: "var(--text-muted)" }}>Alessandro Botti © 2026</span>
+          <span style={{ fontSize: 11, color: "var(--text-muted)" }}>{t.footer}</span>
         </motion.div>
       </div>
     </section>
